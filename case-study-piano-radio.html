@@ -1,0 +1,354 @@
+<head>
+    <link rel="stylesheet" href="slides.css" />
+
+    <style>
+
+        pre {
+            margin-top: 0px;
+            margin-bottom: 0px;
+            padding-top: 0px;
+            padding-bottom: 0px;
+            padding-left: 32px;
+            background-color: lightgrey;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+    <script type="text/javascript" src="escape.js"></script>
+    <div id="border">
+        <button id="prev" style="float:left; font-size:24px;">Prev</button>
+        <button id="next" style="float:left;font-size:24px;">Next</button>
+        <div id="slide">
+        </div>
+    </div>
+    <div id="slides" hidden="hidden">
+        <div class="title">
+            <h1>
+                Web Programming
+            </h1>
+            <h1>
+                Case Study: Piano Radio
+            </h1>
+            <hr />
+            <h2>Alex Chen</h2>
+        </div>
+        <div class="content">
+            <h1>Introduction</h1>
+            <hr />
+            <ul>
+                <li>MIDI piano on the internet</li>
+                <li>MIDI: music represented as key presses</li>
+                <li>Get MIDI input from user</li>
+                <li>Send MIDI data to server</li>
+                <li>Receive MIDI data from server</li>
+                <li>Respond to MIDI input</li>
+                <li>Everyone on page hears the music live!</li>
+            </ul>
+        </div>
+        <div class="content">
+            <h1>Introduction (2)</h1>
+            <hr />
+            <ul>
+                <li><a href="https://PianoRadio.ineedauniqueuse.repl.co">https://PianoRadio.ineedauniqueuse.repl.co</a></li>
+                <li>User can specify room ID in URL</li>
+                <ul>
+                    <li>https://PianoRadio.ineedauniqueuse.repl.co/room_id_here</li>
+                </ul>
+                <li>Only users in same room can hear</li>
+                <li>Client uses soundfont library for audio</li>
+            </ul>
+        </div>
+        <div class="content">
+            <h1>Stack</h1>
+            <hr />
+            <ul>
+                <li>My first server + socket + client project</li>
+                <li>Node.JS server</li>
+                <li>Socket.io connection</li>
+                <li>HTML client</li>
+            </ul>
+        </div>
+
+        <div class="content">
+            <h1>Sockets</h1>
+            <hr />
+            <ul>
+                <li>Provides constant connection to server</li>
+                <li>Send/receive data in real time</li>
+                <li>Socket.io makes this VERY easy</li>
+            </ul>
+        </div>
+
+        <div class="content">
+            <h1>Server Init</h1>
+            <hr />
+            <ul>
+                <li>Express (URL routing)</li>
+                <li>HTTP server</li>
+                <li>Socket.io (server-side)</li>
+            </ul>
+            <pre>
+var express = require('express')
+    , app = express()
+    , http = require('http')
+    , server = http.createServer(app)
+    , io = require('socket.io')(server);
+            </pre>
+        </div>
+        <div class="content">
+            <h1>Server Init (2)</h1>
+            <hr />
+            <ul>
+                <li>Set up URL route</li>
+                <li>Allow user to use any path (room)</li>
+                <li>Serve client page</li>
+            </ul>
+            <pre>
+app.get('/*', function (req, res) {
+    console.log('radio client connecting');
+    res.sendFile(__dirname + '/radio_client.html');
+});
+            </pre>
+        </div>
+        <div class="content">
+            <h1>Server Init (3)</h1>
+            <hr />
+            <ul>
+                <li>Client requires soundfont library</li>
+                <li>We serve it</li>
+            </ul>
+            <p>Client</p>
+            <pre>
+&lt;script src="soundfont-player.min.js"&gt;&lt;/script&gt;
+            </pre>
+            <p>Server</p>
+            <pre>
+app.get('/soundfont-player.min.js', function (req, res) {
+    res.sendFile(__dirname + '/soundfont-player.min.js');
+});
+            </pre>
+        </div>
+
+
+
+
+        <div class="content">
+            <h1>Socket.io (Server-side)</h1>
+            <hr />
+            <ul>
+                <li>Socket.io is event-based</li>
+                <li>Standard events</li>
+                <ul>
+                    <li><code>connection</code> (server): Client connects to server</li>
+                    <li><code>disconnect</code> (socket): Client disconnects</li>
+                </ul>
+            </ul>
+            <pre>
+io.on('connection', function (socket) {
+    ...
+    socket.on('disconnect', function () {
+        ...
+    });
+}
+            </pre>
+        </div>
+
+
+        <div class="content">
+            <h1>Socket.io (Server-side) (2)</h1>
+            <hr />
+            <ul>
+                <li>Custom events</li>
+                <li>Register with <code>on(eventName, func(data))</code></li>
+                <ul>
+                    <li><code>joinRoom</code>: Client joins a room</li>
+                    <li><code>keyDown</code>: Client presses MIDI key (data: noteNumber)</li>
+                    <li><code>keyUp</code>: Client releases MIDI key (data: noteNumber)</li>
+                </ul>
+                <li><code>data</code> can be object, string, number, etc</li>
+            </ul>
+            <pre>
+io.on('connection', function (socket) {
+    ...
+    socket.on('joinRoom', function (data) {
+        ...
+    });
+    socket.on('keyDown', function (key) {
+        ...
+    });
+    socket.on('keyUp', function (key) {
+        ...
+    });
+    socket.on('disconnect', function () {
+        ...
+    });
+}
+            </pre>
+        </div>
+
+        <div class="content">
+            <h1>Socket.io (Server-side) Rooms</h1>
+            <hr />
+            <ul>
+                <li>Built-in feature</li>
+                <li>Socket can join multiple rooms</li>
+                <li>Socket receives events from room</li>
+                <li><code>socket.join(roomName)</code> to join</li>
+                <li><code>socket.leave(roomName)</code> to leave</li>
+                <li><code>io.to(roomName).emit(eventName, data)</code></li>
+                <ul><li>Send to all sockets in a room</li></ul>
+                <li><code>socket.rooms</code> lists that socket's rooms</li>
+            </ul>
+            <pre>
+
+io.on('connection', function (socket) {
+    ...
+    var room = 'default';
+    socket.join(room);
+    socket.on('joinRoom', function (data) {
+        for (let room in socket.rooms) {
+            socket.leave(room);
+            io.to(room).emit('userCount', io.sockets.adapter.rooms.get(room).size)
+        }
+        room = data;
+        socket.join(room);
+        io.to(room).emit('userCount', io.sockets.adapter.rooms.get(room).size)
+        console.log(`joined room ${room}`);
+    });
+    ...
+}
+            </pre>
+        </div>
+
+        <div class="content">
+            <h1>Socket.io (Server-side) Rooms (2)</h1>
+            <hr />
+            <ul>
+                <li>When receiving data from socket...</li>
+                <li><code>socket.to(roomName).emit(eventName, data)</code></li>
+                <ul><li>Send to all sockets EXCEPT the source</li></ul>
+                <li><code>io.sockets.adapter.rooms.get(room)</code></li>
+                <ul><li>Get info about room</li></ul>
+            </ul>
+            <pre>
+
+io.on('connection', function (socket) {
+    ...
+    socket.on('keyDown', function (key) {
+        console.log(`keyDown: (${room}, ${socket.id}, ${key})`);
+        socket.to(room).emit('keyDown', key);
+    });
+    socket.on('keyUp', function (key) {
+        console.log(`keyUp: (${room}, ${socket.id}, ${key})`);
+        socket.to(room).emit('keyUp', key);
+    });
+    socket.on('disconnect', function () {
+        console.log(`disconnected: ${socket.id}`);
+        for (let room in socket.rooms) {
+            socket.leave(room);
+            io.to(room).emit('userCount', io.sockets.adapter.rooms.get(room).size)
+        }
+    });
+}
+            </pre>
+        </div>
+
+
+        <div class="content">
+            <h1>Server Port</h1>
+            <hr />
+            <ul>
+                <li>Default port</li>
+            </ul>
+            <pre>
+server.listen(3000, () => {
+    console.log('listening');
+});
+            </pre>
+        </div>
+        <div class="content">
+            <h1>Client Init</h1>
+            <hr />
+            <ul>
+                <li>Since client page is served by server...</li>
+                <li><code>io.connect()</code> to easy connect</li>
+                <ul><li>No URL needed!</li></ul>
+                <li>Get room ID from URL path</li>
+            </ul>
+            <pre>
+socket = io.connect();
+
+var room = window.location.pathname;
+socket.emit('joinRoom', room);
+            </pre>
+        </div>
+
+        <div class="content">
+            <h1>Client Init (2)</h1>
+            <hr />
+            <ul>
+                <li>Register for events</li>
+                <li>Receive data from server</li>
+                <ul>
+                    <li><code>keyDown</code>: Someone presses MIDI key (data: noteNumber)</li>
+                    <li><code>keyUp</code>: Someone releases MIDI key (data: noteNumber)</li>
+                    <li><code>userCount</code>: Update number of watchers (data: userCount)</li>
+                </ul>
+            </ul>
+            <pre>
+socket.on('keyDown', function (key) {
+    console.log(key);
+    if (instrument) {
+        keyDown(key);
+    }
+});
+socket.on('keyUp', function (key) {
+    console.log(key);
+    if (instrument) {
+        keyUp(key);
+    }
+});
+socket.on('userCount', function (data) {
+    userCount = data;
+});
+            </pre>
+        </div>
+
+
+        <div class="content">
+            <h1>Client Init (3)</h1>
+            <hr />
+            <ul>
+                <li>Send data to server...</li>
+                <ul>
+                    <li><code>keyDown</code>: When we press key (data: noteNumber)</li>
+                    <li><code>keyUp</code>: When we release key (data: noteNumber)</li>
+                </ul>
+            </ul>
+            <p>Key pressed</p>
+            <pre>
+if (socket) {
+    console.log('sending key ' + key);
+    socket.emit('keyDown', key);
+} else {
+    console.log('no socket');
+}
+            </pre>
+            <p>Key released</p>
+            <pre>
+if (socket) {
+    console.log('sending key ' + key);
+    socket.emit('keyUp', key);
+}
+</pre>
+        </div>
+        <div class="title">
+            <h1>Thank you!</h1>
+            <hr />
+            <h2>Questions?</h2>
+        </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script type="text/javascript" src="slides.js"></script>
+</body>

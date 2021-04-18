@@ -17,5 +17,5 @@ These slides are powered by `slides.js`. Simply include this script at the botto
 
 # Style
 A default stylesheet is provided in `slides.css`
-- Use `title margin` for a title slide
-- Use `content margin` for a body slide
+- Use `title` for a title slide
+- Use `content` for a body slide

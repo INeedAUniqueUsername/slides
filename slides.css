@@ -6,6 +6,9 @@ body {
     background-color: lightsteelblue;
 }
 
+#prev {
+    margin-left:64px;
+}
 
 .speakerNotesBox {
     margin: 64px 64px 64px 64px;
