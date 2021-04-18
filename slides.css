@@ -6,20 +6,24 @@ body {
     background-color: lightsteelblue;
 }
 
-#border {
-    margin: 64px 64px 64px 64px;
-    background-color: antiquewhite
-}
 
-.margin {
+.speakerNotesBox {
     margin: 64px 64px 64px 64px;
+    padding: 64px 64px 64px 64px;
+    background-color: antiquewhite;
+    border: 2px solid black;
+    font-size: 32px;
 }
 
 #slide {
+    margin: 64px 64px 64px 64px;
+    padding: 64px 64px 64px 64px;
+    background-color: antiquewhite;
     border: 2px solid black;
-    width: calc(100% - 0px);
-    height: calc(100% - 128px);
+    width: calc(100% - 256px);
+    height: calc(100% - 256px);
 }
+
 
 pre {
     margin-top:0px;
@@ -81,6 +85,10 @@ code {
     }
     .content > ul {
         margin:-48px 0px 32px 0px;
+    }
+
+    .title .speakerNotes, .content .speakerNotes {
+        visibility:hidden;
     }
 
 .content p, .content li {

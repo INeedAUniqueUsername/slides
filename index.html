@@ -22,16 +22,61 @@
         <div class="content margin">
             <h1>Introduction</h1>
             <hr />
-            <p></p>
-            <p>I am IEEE@UCR Webmaster 2020-2022</p>
-            <p>Hosting several workshops on web development</p>
-            <p>Slides written in HTML + CSS + JS</p>
+            <ul>
+                <li>I am IEEE@UCR Webmaster 2020-2022</li>
+                <li>Hosting several workshops on web development</li>
+            </ul>
+            <p class="speakerNotes">aaaaaaaaaaaaaaa</p>
         </div>
         <div class="content margin">
-            <h1>Index</h1>
+            <h1>Slides</h1>
             <hr />
-            <p><a href="intro-web-client.html">Web Programming: HTML + CSS + JS</a></p>
-            <p><a href="intro-web-client.html">Case Study: Radio Piano</a></p>
+            <ul>
+                <li><a href="intro-web-client.html">Web Programming: HTML + CSS + JS</a></li>
+                <li><a href="intro-web-client.html">Case Study: Radio Piano</a></li>
+            </ul>
+        </div>
+        <div class="content margin">
+            <h1>Technical</h1>
+            <hr />
+            <ul>
+                <li>Slides written in HTML + CSS + JS</li>
+                <li>JavaScript is code in <code>slides.js</code></li>
+                <li>CSS code is in <code>slides.css</code></li>
+            </ul>
+        </div>
+        <div class="content margin">
+            <h1><code>slides.js</code></h1>
+            <hr />
+            <ul>
+                <li>Features</li>
+                <ul>
+                    <li>Slide number is in URL hash</li>
+                    <li>Press left arrow for previous slide</li>
+                    <li>Press right arrow for next slide</li>
+                </ul>
+                <li>Requirements</li>
+                <ul>
+                    <li><code>&lt;div id="slide"&gt;</code> to hold the slide</li>
+                    <li><code>&lt;div id="slides" hidden="hidden"&gt;</code> to hold slides</li>
+                    <ul>
+                        <li>Each child element is a slide</li>
+                    </ul>
+                    <li><code>&lt;button id="prev"&gt;</code> to go previous slide</li>
+                    <li><code>&lt;button id="next"&gt;</code> to go next slide</li>
+                </ul>
+            </ul>
+        </div>
+        <div class="content margin">
+            <h1><code>slides.css</code></h1>
+            <hr />
+            <ul>
+                <li>Features</li>
+                <ul>
+                    <li>Use <code>title margin</code> for a title slide</li>
+                    <li>Use <code>content margin</code> for a body slide</li>
+                </ul>
+            </ul>
         </div>
     </div>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>

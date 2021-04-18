@@ -48,11 +48,34 @@ function navigateSlide(index) {
 		return;
 	}
 
-	s = s.outerHTML;
-
-
+	let html = s.outerHTML;
 	let slide = $('#slide');
-	slide.html(s);
+	slide.html(html);
+
+	let href = location.href;
+	let q = href.indexOf("?");
+	let h = href.indexOf("#");
+	if (q > -1) {
+
+		let str = h > -1 ? href.substring(q + 1, h) : href.substring(q + 1);
+		let args = new URLSearchParams(str);
+		if (args.has('speakerNotes')) {
+			let speakerNotes = s.querySelector('.speakerNotes');
+			if (speakerNotes) {
+				let speakerDiv = document.body.querySelector('.speakerNotesBox');
+				if (!speakerDiv) {
+					speakerDiv = document.createElement('div');
+					speakerDiv.className = 'speakerNotesBox';
+					slide.parent().append(speakerDiv)
+				}
+				speakerDiv.innerHTML = speakerNotes.innerHTML;
+			} else {
+				let speakerDiv = document.body.querySelector('.speakerNotesBox');
+				if (speakerDiv)
+					speakerDiv.remove()
+			}
+		}
+	}
 
 	let next = $('#next');
 	next.off('click');
