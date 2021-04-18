@@ -1,0 +1,111 @@
+<head>
+    <style>
+        * {
+            font-family:'IBM Plex Mono';
+        }
+        body {
+            background-color:lightsteelblue;
+        }
+        #slide {
+            margin: 64px 64px 64px 64px;
+
+            background-color:antiquewhite
+        }
+        .margin {
+            margin: 64px 64px 64px 64px;
+        }
+        .title {
+            border: 2px solid black;
+            width: calc(100% - 0px);
+            height: calc(100% - 128px);
+        }
+            .title h1 {
+                text-align: center;
+                font-size: 48px;
+                margin: 0px 0px 0px 0px;
+            }
+            .title h2 {
+                text-align: center;
+                font-size: 32px;
+                margin: 0px 0px 0px 0px;
+            }
+            .title p {
+                text-align:center;
+                font-size: 16px;
+            }
+            .title hr {
+                margin:32px 0px 32px 0px;
+            }
+            .title *:first-child {
+                margin-top:160px;
+            }
+
+
+        .content {
+            border: 2px solid black;
+            width: calc(100% - 0px);
+            height: calc(100% - 128px);
+        }
+        .content h1 {
+            font-size: 48px;
+            margin: 0px 0px 0px 0px;
+        }
+
+        .content h2 {
+            font-size: 32px;
+            margin: 0px 0px 0px 0px;
+        }
+
+        .content p {
+            font-size: 32px;
+        }
+
+            .content hr {
+                margin: 32px 0px 32px 0px;
+            }
+
+            .content *:first-child {
+                margin-top: 160px;
+            }
+    </style>
+</head>
+<body>
+
+    <div id="slide">
+    </div>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <div id="slides" hidden="hidden">
+        <div class="title">
+            <div class="margin">
+
+                <h1>
+                    Introduction to Web Programming
+                </h1>
+                <h1>
+                    HTML + CSS + JS
+                </h1>
+                <hr />
+                <h2>Alex Chen</h2>
+            </div>
+        </div>
+        <div class="content">
+            <div class="margin">
+                <h1>Introduction</h1>
+                <hr />
+                <p>HTML: Structure and content</p>
+                <p>CSS: Appearance and animation</p>
+                <p>JS: Functionality and behavior</p>
+            </div>
+        </div>
+        <div class="content">
+            <div class="margin">
+                <ul>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="index.js"></script>
+</body>
