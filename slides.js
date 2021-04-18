@@ -19,7 +19,7 @@ function init() {
 	location.href = anchor;
 }
 function navigateUrl(next) {
-	if (next >= slides.children.length) {
+	if (next < 0 || next >= slides.children.length) {
 		console.log('no slide: ' + next)
 		return;
 	}
@@ -38,7 +38,7 @@ function navigateSlide(index) {
 	let s = document.getElementById(index);
 	if (!s) {
 		index = parseInt(index);
-		s=  slides.children[index];
+		s = slides.children[index];
 	}
 
 	console.log(`navigate slide: ${index}`);
