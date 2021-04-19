@@ -166,6 +166,7 @@ io.on('connection', function (socket) {
                 </ul>
                 <li><code>data</code> can be object, string, number, etc</li>
             </ul>
+                
             <pre>
 io.on('connection', function (socket) {
     ...
@@ -189,7 +190,6 @@ io.on('connection', function (socket) {
             <h1>Socket.io (Server-side) Rooms</h1>
             <hr />
             <ul>
-                <li>Built-in feature</li>
                 <li>Socket can join multiple rooms</li>
                 <li>Socket receives events from room</li>
                 <li><code>socket.join(roomName)</code> to join</li>
@@ -225,7 +225,7 @@ io.on('connection', function (socket) {
             <ul>
                 <li>When receiving data from socket...</li>
                 <li><code>socket.to(roomName).emit(eventName, data)</code></li>
-                <ul><li>Send to all sockets EXCEPT the source</li></ul>
+                <ul><li>Send to all sockets EXCEPT source</li></ul>
                 <li><code>io.sockets.adapter.rooms.get(room)</code></li>
                 <ul><li>Get info about room</li></ul>
             </ul>
@@ -293,6 +293,7 @@ socket.emit('joinRoom', room);
                     <li><code>keyUp</code>: Someone releases MIDI key (data: noteNumber)</li>
                     <li><code>userCount</code>: Update number of watchers (data: userCount)</li>
                 </ul>
+                <li>Drive the soundfont-player</li>
             </ul>
             <pre>
 socket.on('keyDown', function (key) {
@@ -351,6 +352,31 @@ if (socket) {
                 <li>Open fire walls, forward ports, etc</li>
                 <li>For now, we use Repl.it</li>
                 <ul><li>This becomes VERY easy</li></ul>
+            </ul>
+        </div>
+        <div class="content">
+            <h1>
+                Summary
+            </h1>
+            <hr />
+            <ul>
+                <li>Server serves client files</li>
+                <li>Listen for connections</li>
+                <li>Receives data from clients</li>
+                <li>Client connects to server</li>
+                <li>Sends user input as data</li>
+                <li>Translates data to audio output</li>
+            </ul>
+        </div>
+        <div class="content">
+            <h1>
+                Closing
+            </h1>
+            <hr />
+            <ul>
+                <li>More web programming workshops</li>
+                <li>Join the IEEE@UCR Discord server</li>
+                <li>Ping me if you have questions</li>
             </ul>
         </div>
         <div class="title">

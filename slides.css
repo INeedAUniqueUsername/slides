@@ -25,6 +25,7 @@ body {
     border: 2px solid black;
     width: calc(100% - 256px);
     height: calc(100% - 256px);
+    overflow-y: auto;
 }
 
 
@@ -35,7 +36,7 @@ pre {
     padding-bottom: 0px;
     padding-left: 32px;
     background-color: rgb(229, 229, 240);
-    font-size: 16px;
+    font-size: 24px;
 }
 code {
     margin-top: 0px;
@@ -45,7 +46,6 @@ code {
     background-color: rgb(229, 229, 240);
     font-size: 32px;
 }
-
     .title h1 {
         text-align: center;
         font-size: 48px;
@@ -68,10 +68,9 @@ code {
     }
 
     .title *:first-child {
-        margin-top: 160px;
+        margin-top: 10%;
+        
     }
-
-
 
     .content h1 {
         font-size: 48px;
