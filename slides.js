@@ -77,6 +77,11 @@ function navigateSlide(index) {
 		}
 	}
 
+	let number = document.getElementById('number');
+	if (number) {
+		number.value = index;
+	}
+
 	let next = $('#next');
 	next.off('click');
 	next.click(function () {
