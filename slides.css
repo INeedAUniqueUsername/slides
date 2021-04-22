@@ -10,6 +10,10 @@ body {
     margin-left:64px;
 }
 
+#prev, #next {
+    visibility:hidden;
+}
+
 .speakerNotesBox {
     margin: 64px 64px 64px 64px;
     padding: 64px 64px 64px 64px;
@@ -68,7 +72,7 @@ code {
     }
 
     .title *:first-child {
-        margin-top: 10%;
+        margin-top: 5%;
         
     }
 

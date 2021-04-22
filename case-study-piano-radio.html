@@ -4,12 +4,9 @@
     <link rel="stylesheet" href="slides.css" />
 
     <style>
-
         pre {
             font-size: 20px;
         }
-
-
     </style>
 </head>
 <body>
@@ -30,21 +27,91 @@
                 Case Study: Piano Radio
             </h1>
             <hr />
-            <h2>Alex Chen</h2>
+            <h2>
+                Presented by Alex Chen
+                <br />
+                for IEEE@UCR on Discord
+                <br />
+                Thursday 5pm, 4/22/2021
+            </h2>
+            <hr />
+            <h2>
+                Slides available at
+                <br />
+                <a href="https://ineedauniqueusername.github.io/slides/case-study-piano-radio.html">https://ineedauniqueusername.github.io/slides/case-study-piano-radio.html</a>
+            </h2>
         </div>
+
+
+        <div class="content">
+            <h1>Welcome to IEEE@UCR</h1>
+            <hr />
+            <ul>
+                <li>EE, CE, CS, etc</li>
+                <li>Projects, workshops, volunteering, socials</li>
+                <li>Fun stuff</li>
+                <li>Lots of hardware stuff</li>
+                <li>What about the software?</li>
+                <li>Introducing: Programming workshops</li>
+            </ul>
+        </div>
+
+        <div class="content">
+            <h1>Topics</h1>
+            <hr />
+            <ul>
+                <li>Web programming</li>
+                <ul>
+                    <li>Server programming</li>
+                    <li>Client programming</li>
+                </ul>
+                <li>Web scraping</li>
+                <li>GUI programming</li>
+                <li>Algorithmic art</li>
+            </ul>
+        </div>
+
+        <div class="content">
+            <h1>Problem</h1>
+            <hr />
+            <ul>
+                <li>UCLA has DevX - real-world software development!</li>
+                <li>What do we have? Not enough!</li>
+                <li>Resumes, research, networking, webmastering, leetcode... practicals???</li>
+                <li>Mostly driven by personal projects</li>
+                <li>BCOE needs more interesting software dev opportunities</li>
+                <li>Web programming, Discord bots, etc</li>
+                <li>Programming is boring, so gotta be creative!</li>
+            </ul>
+        </div>
+        <div class="content">
+            <h1>
+                Answer
+            </h1>
+            <hr />
+            <ul>
+                <li>More programming workshops</li>
+                <li>Software development projects under IEEE@UCR</li>
+                <li>Collaborative, practical learning</li>
+                <li>For programmers, by programmers</li>
+                <li>Learn by example</li>
+            </ul>
+        </div>
+
         <div class="content">
             <h1>Introduction</h1>
             <hr />
             <ul>
-                <li>MIDI piano on the internet</li>
-                <li>MIDI: music represented as key presses</li>
+                <li>Virtual piano on the internet</li>
+                <li>MIDI: music data = key presses!</li>
                 <li>Get MIDI input from user</li>
                 <li>Send MIDI data to server</li>
                 <li>Receive MIDI data from server</li>
-                <li>Respond to MIDI input</li>
-                <li>Everyone on page hears the music live!</li>
+                <li>Use MIDI data to drive audio player</li>
+                <li>Everyone on page hears live music!</li>
             </ul>
         </div>
+
         <div class="content">
             <h1>Introduction (2)</h1>
             <hr />
@@ -65,17 +132,34 @@
                 <li>My first server + socket + client project</li>
                 <li>Node.JS server</li>
                 <li>Socket.io connection</li>
-                <li>HTML client</li>
+                <li>HTML/CSS/JS client</li>
             </ul>
         </div>
 
         <div class="content">
-            <h1>Sockets</h1>
+            <h1>Server</h1>
             <hr />
             <ul>
-                <li>Provides constant connection to server</li>
+                <li>Cool new technology for our modern age</li>
+                <li>Lets you do internet stuff</li>
+                <li>Wins hackathons</li>
+                <li>They don't teach you this in school</li>
+                <ul><li>So it MUST be really interesting, right?</li></ul>
+                <li>Node.JS is a very popular choice</li>
+                <ul><li>JavaScript though</li></ul>
+            </ul>
+        </div>
+
+        <div class="content">
+            <h1>Socket</h1>
+            <hr />
+            <ul>
+                <li>Provides continuous connection to server</li>
                 <li>Send/receive data in real time</li>
+                <li>Can be difficult to self-learn</li>
+                <li>Need to find a good library</li>
                 <li>Socket.io makes this VERY easy</li>
+                <ul><li>Used with Node.JS</li></ul>
             </ul>
         </div>
 
@@ -116,6 +200,7 @@ app.get('/*', function (req, res) {
             <ul>
                 <li>Client requires soundfont library</li>
                 <li>We serve it</li>
+                <li>Otherwise client can't get local file</li>
             </ul>
             <p>Client</p>
             <pre>
@@ -128,10 +213,6 @@ app.get('/soundfont-player.min.js', function (req, res) {
 });
             </pre>
         </div>
-
-
-
-
         <div class="content">
             <h1>Socket.io (Server-side)</h1>
             <hr />
@@ -167,7 +248,7 @@ io.on('connection', function (socket) {
                 </ul>
                 <li><code>data</code> can be object, string, number, etc</li>
             </ul>
-                
+
             <pre>
 io.on('connection', function (socket) {
     ...
@@ -197,7 +278,7 @@ io.on('connection', function (socket) {
                 <li><code>socket.leave(roomName)</code> to leave</li>
                 <li><code>io.to(roomName).emit(eventName, data)</code></li>
                 <ul><li>Send to all sockets in a room</li></ul>
-                <li><code>socket.rooms</code> lists that socket's rooms</li>
+                <li><code>socket.rooms</code>: list of socket's rooms</li>
             </ul>
             <pre>
 
@@ -258,7 +339,8 @@ io.on('connection', function (socket) {
             <h1>Server Port</h1>
             <hr />
             <ul>
-                <li>Default port</li>
+                <li>Default port 3000</li>
+                <li></li>
             </ul>
             <pre>
 server.listen(3000, () => {
@@ -314,8 +396,6 @@ socket.on('userCount', function (data) {
 });
             </pre>
         </div>
-
-
         <div class="content">
             <h1>Client Init (3)</h1>
             <hr />
@@ -331,8 +411,6 @@ socket.on('userCount', function (data) {
 if (socket) {
     console.log('sending key ' + key);
     socket.emit('keyDown', key);
-} else {
-    console.log('no socket');
 }
             </pre>
             <p>Key released</p>
@@ -343,6 +421,19 @@ if (socket) {
 }
 </pre>
         </div>
+
+        <div class="content">
+            <h1>
+                Client Code
+            </h1>
+            <hr />
+            <ul>
+                <li>Out of scope</li>
+                <li>It's just data</li>
+                <li>How you handle data up to you</li>
+            </ul>
+        </div>
+
         <div class="content">
             <h1>
                 Hosting
@@ -350,11 +441,31 @@ if (socket) {
             <hr />
             <ul>
                 <li>Server setup is difficult</li>
-                <li>Open fire walls, forward ports, etc</li>
+                <li>Open firewalls, forward ports, etc</li>
+                <li>Also need hosting</li>
                 <li>For now, we use Repl.it</li>
                 <ul><li>This becomes VERY easy</li></ul>
             </ul>
         </div>
+
+        <div class="content">
+            <h1>
+                Alternatives?
+            </h1>
+            <hr />
+            <ul>
+                <li>JavaScript SUCKS (but we're stuck with it)</li>
+                <li>Hard to find good libraries elsewhere</li>
+                <li>Look for event-based libraries</li>
+                <li>Otherwise have to do manual work</li>
+                <ul>
+                    <li>Connect to server</li>
+                    <li>Continuously wait to receive data</li>
+                </ul>
+                <li>C# Server + C# Client: <a href="https://github.com/mrousavy/GenericProtocol">GenericProtocol</a></li>
+            </ul>
+        </div>
+
         <div class="content">
             <h1>
                 Summary
@@ -369,21 +480,34 @@ if (socket) {
                 <li>Translates data to audio output</li>
             </ul>
         </div>
+
+
         <div class="content">
             <h1>
                 Closing
             </h1>
             <hr />
             <ul>
-                <li>More web programming workshops</li>
-                <li>Join the IEEE@UCR Discord server</li>
-                <li>Ping me if you have questions</li>
+
+                <li>Lots of things not taught in school</li>
+                <li>Self-learning is pain</li>
+                <li>More programming workshops</li>
+                <li>Software development at IEEE@UCR</li>
+                <li>I'm bored, aren't you too?</li>
+                <li>Let's develop!</li>
             </ul>
         </div>
+
         <div class="title">
             <h1>Thank you!</h1>
             <hr />
-            <h2>Questions?</h2>
+            <h2>Questions? Ask on Discord!</h2>
+            <hr />
+            <h2>
+                Slides available at
+                <br />
+                <a href="https://ineedauniqueusername.github.io/slides/case-study-piano-radio.html">https://ineedauniqueusername.github.io/slides/case-study-piano-radio.html</a>
+            </h2>
         </div>
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
