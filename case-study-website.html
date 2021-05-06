@@ -64,6 +64,16 @@
         </div>
 
         <div class="content">
+            <h1>Opening</h1>
+            <hr />
+            <ul>
+                <li>Series of programming workshops</li>
+                <li>Trying to improve my teaching skills</li>
+                <li>Let me know if you have any questions</li>
+            </ul>
+        </div>
+
+        <div class="content">
             <h1>Introduction</h1>
             <hr />
             <p>HTML: Structure and content</p>
@@ -74,7 +84,7 @@
             <h1>HTML</h1>
             <hr />
             <ul>
-                <li>&lt;head&gt; contains title, link, style</li>
+                <li>&lt;head&gt; contains title, link, style, etc</li>
                 <ul>
                     <li>&lt;title&gt; shows on tab (not in page)</li>
                     <li>&lt;link&gt; loads CSS, font, etc</li>
@@ -85,13 +95,13 @@
             <pre>
             <script type="text/javascript">
                 setHTML(
-                    `<head>
-                <title>Web Programming</title>
-                <link rel="stylesheet" href="slides.css" />
-                <style></style>
+`<head>
+    <title>Web Programming</title>
+    <link rel="stylesheet" href="slides.css" />
+    <style></style>
 </head>
 <body>
-                <!-- Content -->
+    ...
 </body>`)
 </script>
             </pre>
@@ -253,6 +263,16 @@ Closing tag                 ->
             </ul>
         </div>
 
+        <div class="content">
+            <h1>&lt;img&gt;</h1>
+            <hr />
+            <ul>
+                <li><code>src</code>: path to image</li>
+                <li><code>width</code>: can be set on element itself</li>
+                <li><code>height</code>: can be set on element itself</li>
+            </ul>
+        </div>
+
 
         <div class="content">
             <h1>&lt;select&gt;</h1>
@@ -317,8 +337,11 @@ Closing tag                 ->
             <h1>&lt;script&gt;</h1>
             <hr />
             <ul>
+                <li>JavaScript</li>
                 <li>Runs in order defined (top to bottom)</li>
                 <li>Global scope (by default)</li>
+                <li>Inline code: <code>&lt;script type="text/javascript"&gt;...&lt;script&gt;></code></li>
+                <li>Script file: <code>&lt;script src="scripts/foo.js"&gt;&lt;script&gt;></code></li>
             </ul>
             <pre>
             <script type="text/javascript">
@@ -497,6 +520,7 @@ Closing tag                 ->
                 <li><code>element.id</code> to set id</li>
                 <li><code>element.className</code> to set class</li>
                 <li><code>element.style</code> to set inline style (non-class)</li>
+                <ul><li>Some attributes have different names in code</li></ul>
                 
                 <li><code>element.remove()</code> removes element from its parent</li>
                 <li><code>element.append(el)</code> appends a new child element</li>
@@ -665,6 +689,19 @@ pre {
                 <li>There are A LOT of attributes</li>
             </ul>
         </div>
+
+        <div class="content">
+            <h1>CSS Attributes (2)</h1>
+            <hr />
+            <ul>
+                <li><code>visibility</code> </li>
+                <ul>
+                    <li><code>visible</code></li>
+                    <li><code>hidden</code></li>
+                </ul>
+            </ul>
+        </div>
+
         <div class="content">
             <h1>Font</h1>
             <hr />
@@ -751,7 +788,59 @@ pre {
                 </pre>
         </div>
 
+        <div class="content">
+            <h1>
+                GitHub Pages
+            </h1>
+            <hr />
+            <ul>
+                <li>Free hosting</li>
+                <li>Static webpages only</li>
+                <li>index.html: Your main page</li>
+                <ul>
+                    <li><a href="https://en.wikipedia.org/wiki/Webserver_directory_index">https://en.wikipedia.org/wiki/Webserver_directory_index</a></li>
+                </ul>
+                <li>404.html: Custom 404 page!</li>
+            </ul>
+        </div>
 
+        <div class="content">
+            <h1>
+                Speedrun
+            </h1>
+            <hr />
+            <ul>
+                <li>Go to GitHub</li>
+                <li>Create a new repository: {username}.github.io</li>
+                <li>Create index.html</li>
+                <ul>
+                    <li>Change the default font</li>
+                    <li>Set some colors</li>
+                    <li>Add some text</li>
+                </ul>
+                <li>https://{username}.github.io</li>
+            </ul>
+        </div>
+
+        <div class="content">
+            <h1>
+                Closing (1)
+            </h1>
+            <hr />
+            <ul>
+                <li>Rome was not built in a day</li>
+            </ul>
+        </div>
+
+        <div class="content">
+            <h1>
+                Closing (2)
+            </h1>
+            <hr />
+            <ul>
+                <li>But JavaScript was designed in 10 days</li>
+            </ul>
+        </div>
 
         <div class="title">
             <h1>Thank you!</h1>
