@@ -14,13 +14,14 @@ body {
     visibility:visible;
 }
 
-.speakerNotesBox {
+#speakerNotesBox, #consoleBox, #sourceBox {
     margin: 64px 64px 64px 64px;
     padding: 64px 64px 64px 64px;
     background-color: white;
     border: 2px solid black;
     font-size: 32px;
 }
+
 
 #slide {
     margin: 64px 64px 64px 64px;
@@ -41,6 +42,8 @@ pre {
     padding-left: 32px;
     background-color: rgb(229, 229, 240);
     font-size: 24px;
+
+    overflow-x: auto;
 }
 code {
     margin-top: 0px;
@@ -91,10 +94,6 @@ code {
     }
     .content > ul {
         margin:-48px 0px 32px 0px;
-    }
-
-    .title .speakerNotes, .content .speakerNotes {
-        visibility:hidden;
     }
 
 .content p, .content li {

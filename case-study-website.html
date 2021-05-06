@@ -1,0 +1,770 @@
+<head>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="slides.css" />
+    <style>
+        @keyframes fadein {
+    0% { opacity: 0.5; }
+    25% {   opacity: 1; }
+    50% { opacity:0.5; }
+    75% { opacity: 0; }
+    100% { opacity:0.5; }
+}
+
+.fading {
+    animation-name: fadein;
+    animation-duration: 1.5s;
+    animation-timing-function: ease;
+    animation-fill-mode: both;
+    animation-iteration-count: infinite;
+}
+    </style>
+</head>
+<body>
+    <script type="text/javascript" src="escape.js"></script>
+
+    <div id="border">
+        <button id="prev" style="float:left; font-size:24px;">Prev</button>
+        <button id="next" style="float:left;font-size:24px;">Next</button>
+        <div id="slide">
+        </div>
+    </div>
+
+    <div id="slides" hidden="hidden">
+        <div class="title">
+            <h1>
+                Introduction to
+                <br />
+                Web Programming
+                <br />
+                HTML + CSS + JS
+            </h1>
+            <hr />
+            <h2>
+                Presented by Alex Chen
+                <br />
+                for IEEE@UCR on Zoom
+                <br />
+                Thursday 4pm, 5/6/2021
+            </h2>
+            <hr />
+            <h2>
+                Slides available at
+                <br />
+                <a href="https://ineedauniqueusername.github.io/slides/case-study-website.html">https://ineedauniqueusername.github.io/slides/case-study-website.html</a>
+            </h2>
+        </div>
+
+        <div class="content">
+            <h1>Reminder</h1>
+            <hr />
+            <ul>
+                <li>Remember to record lecture</li>
+            </ul>
+        </div>
+
+        <div class="content">
+            <h1>Introduction</h1>
+            <hr />
+            <p>HTML: Structure and content</p>
+            <p>CSS: Appearance and animation</p>
+            <p>JS: Functionality and behavior</p>
+        </div>
+        <div class="content">
+            <h1>HTML</h1>
+            <hr />
+            <ul>
+                <li>&lt;head&gt; contains title, link, style</li>
+                <ul>
+                    <li>&lt;title&gt; shows on tab (not in page)</li>
+                    <li>&lt;link&gt; loads CSS, font, etc</li>
+                    <li>&lt;style&gt; loads CSS from text</li>
+                </ul>
+                <li>&lt;body&gt; contains the actual content</li>
+            </ul>
+            <pre>
+            <script type="text/javascript">
+                setHTML(
+                    `<head>
+                <title>Web Programming</title>
+                <link rel="stylesheet" href="slides.css" />
+                <style></style>
+</head>
+<body>
+                <!-- Content -->
+</body>`)
+</script>
+            </pre>
+        </div>
+
+        <div class="content">
+            <h1>HTML Body</h1>
+            <hr />
+            <ul>
+                <li>Elements</li>
+                <ul>
+                    <li>&lt;div&gt; - general container</li>
+                    <li>&lt;a&gt; - link</li>
+                    <li>&lt;h1&gt;, &lt;h2&gt;, &lt;h3&gt;... - headings</li>
+                    <li>&lt;p&gt; - paragraph (large vertical margin)</li>
+                    <li>&lt;input&gt; - text input</li>
+                    <li>&lt;script&gt; - JS code</li>
+                </ul>
+                <li>Created in order defined</li>
+            </ul>
+        </div>
+
+        <div class="content">
+            <h1>Elements</h1>
+            <hr />
+            <ul>
+                <li>Has tag and attributes</li>
+                <li>May have inner text or HTML</li>
+            </ul>
+            <pre style="float:left; background-color:white;">
+Element opening tag         ->    
+Element attribute           ->    
+Bracket                     ->
+Subelement opening tag      ->
+Subelement attribute        ->
+Closing bracket (no inner)  ->
+Text content                ->
+Closing tag                 ->
+
+            </pre>
+            <pre style=""><script type="text/javascript">
+            setHTML(
+`<tag
+    attribute="value"
+    >
+    <tag
+        attribute="value"
+        />
+    Text content
+</tag>`);
+            </script></pre>
+        </div>
+
+        <div class="content">
+            <h1>&lt;div&gt;</h1>
+            <hr />
+            <ul>
+                <li>Divider</li>
+                <li>Holds other elements</li>
+                <li>Usually has a border</li>
+            </ul>
+            <div style="padding:4px 4px 4px 4px; border:4px red solid;">
+                <p style="margin-top:0px;">div</p>
+                <div style="padding:4px 4px 4px 4px; border:4px red solid;">
+                    <p style="margin-top:0px;">div</p>
+                    <div style="padding:4px 4px 4px 4px; border:4px red solid;">
+                        <p style="margin-top:0px;">div</p>
+                        <div style="padding:4px 4px 4px 4px; border:4px red solid;">
+                            <p style="margin-top:0px;">div</p>
+                            <div style="padding:4px 4px 4px 4px; border:4px red solid;">
+                                <p style="margin-top:0px;">div</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+
+        <div class="content">
+            <h1>&lt;a&gt;</h1>
+            <hr />
+            <ul>
+                <li>Hyperlink element</li>
+                <li><code>href=</code> attribute contains destination</li>
+                <li>Can change appearance (hover / click / clicked / etc)</li>
+            </ul>
+            <pre>
+            <script type="text/javascript">
+                setHTML(
+                    `
+<a href="https://example.com">Go to Example</a>`)
+</script>
+            </pre>
+            <p>
+                <a href="https://example.com">Go to Example</a>
+            </p>
+        </div>
+
+
+        <div class="content">
+            <h1>&lt;h1&gt;, &lt;h2&gt;, &lt;h3&gt;, &lt;h4&gt;, &lt;h5&gt;</h1>
+            <hr />
+            <ul>
+                <li>Text headings of various sizes</li>
+                <li>Large vertical margins</li>
+            </ul>
+            <h1>h1</h1><h2>h2</h2><h3>h3</h3><h4>h4</h4><h5>h5</h5>
+        </div>
+
+
+        <div class="content">
+            <h1>&lt;p&gt;</h1>
+            <hr />
+            <ul>
+                <li>Block of regular text</li>
+                <li>Default style has some vertical margin</li>
+            </ul>
+            <p>This is a paragraph element. There are two sentences in this element. The previous statement is false.</p>
+            <p>This is another paragraph element. The previous paragraph element has three sentences. This paragraph has four sentences. This is the fourth sentence in this element.</p>
+        </div>
+
+        <div class="content">
+            <h1>&lt;code&gt;</h1>
+            <hr />
+            <ul>
+                <li>Inline code</li>
+                <li>Usually has darker background</li>
+                <li>Usually has monospace text</li>
+                <li>Usually shows up within &lt;p&gt;, &lt;h1&gt;, etc</li>
+            </ul>
+
+            <pre><script type="text/javascript">setHTML(
+`<p>
+    Example: The keyword <code>function</code> is reserved
+</p>`)</script></pre>
+            <hr>
+            <p>
+                Example: The keyword <code>function</code> is reserved
+            </p>
+        </div>
+
+        <div class="content">
+            <h1>&lt;pre&gt;</h1>
+            <hr />
+            <ul>
+                <li>Multiline code</li>
+                <li>Raw text</li>
+            </ul>
+        </div>
+        
+        <div class="content">
+            <h1>Inline elements</h1>
+            <hr />
+            <ul>
+                <li>&lt;b&gt; bold</li>
+                <li>&lt;em&gt; italic</li>
+                <li>&lt;span&gt; other styles</li>
+            </ul>
+        </div>
+
+
+        <div class="content">
+            <h1>&lt;select&gt;</h1>
+            <hr />
+            <ul>
+                <li>Drop down menu</li>
+                <li>Has several &lt;option&gt; subelements</li>
+                <ul>
+                    <li><code>value=</code>: String that we set <code>value</code> to</li>
+                </ul>
+            </ul>
+
+            <select>
+                <option value="file">file</option>
+                <option value="date">date</option>
+                <option value="time">time</option>
+                <option value="number">number</option>
+                <option value="text">text</option>
+            </select>
+
+            <pre><script type="text/javascript">
+            setHTML(`
+<select>
+    <option value="file">file</option>
+    <option value="date">date</option>
+    <option value="time">time</option>
+    <option value="number">number</option>
+    <option value="text">text</option>
+</select>`);
+            </script>
+            </pre>
+        </div>
+
+        <div class="content">
+            <h1>&lt;input&gt;</h1>
+            <hr />
+            <ul>
+                <li>Text input container</li>
+                <li><code>placeholder=</code>: Placeholder text when empty (text/number)</li>
+                <li><code>type=</code>: The type of data to input</li>
+                <li><code>onchange=</code>: Event runs when value entered</li>
+            </ul>
+
+            <select onchange="setInput(this)">
+                <option value="file">file</option>
+                <option value="date">date</option>
+                <option value="time">time</option>
+                <option value="number">number</option>
+                <option value="text">text</option>
+                </select>
+                
+            <label for="customInput">Input -></label>
+            <input id="customInput" placeholder="aaaa" type="file">
+            <script>
+                function setInput(element) {
+                    document.getElementById("customInput").type = element.value;
+                }
+            </script>
+        </div>
+
+        <div class="content">
+            <h1>&lt;script&gt;</h1>
+            <hr />
+            <ul>
+                <li>Runs in order defined (top to bottom)</li>
+                <li>Global scope (by default)</li>
+            </ul>
+            <pre>
+            <script type="text/javascript">
+                setHTML(
+                    `<body>
+                <script type="text/javascript">
+                    //Global scope
+                    let v1 = 7;
+                    console.log(v2) //v2 not defined
+                <\/script>
+                <script type="text/javascript">
+                    console.log(v1); //7
+                    let v2 = 15;
+                <\/script>
+                <script type="text/javascript">
+                    {
+                        //Local scope
+                        let v3 = 9;
+                    }
+                <\/script>
+                <script type="text/javascript">
+                    console.log(v3) //v3 not defined
+                <\/script>
+</body>`)
+</script>
+            </pre>
+        </div>
+        <div class="content">
+            <h1>&lt;script&gt; (2)</h1>
+            <hr />
+            <ul>
+                <li>Functions are a special case</li>
+            </ul>
+            <pre>
+            <script type="text/javascript">
+                setHTML(
+                    `<body>
+                <script type="text/javascript">
+                    test1(); // test2 is not defined
+                <\/script>
+                <script type="text/javascript">
+                    function test1() {
+                        return alert('this is a test');
+                    }
+                    {
+                        function test2() {
+                            return alert('this is another test');
+                        }
+                    }
+                <\/script>
+                <script type="text/javascript">
+                    test1(); // sends an alert
+                    test2(); // sends another alert
+                <\/script>
+</body>`)
+</script>
+            </pre>
+        </div>
+
+        <div class="content">
+            <h1>&lt;script&gt; (3)</h1>
+            <hr />
+            <ul>
+                <li>Runs in order defined (top to bottom)</li>
+                <li>At runtime, elements defined below don't exist</li>
+            </ul>
+            <pre>
+            <script type="text/javascript">
+                setHTML(
+                    `<body>
+                <script type="text/javascript">
+                    let div1 = document.getElementById('thing')
+                    //div1 == null
+                <\/script>
+                <div id="thing"></div>
+                <script type="text/javascript">
+                    let div2 = document.getElementById('thing')
+                    //div2 != null
+                <\/script>
+</body>`)
+</script>
+            </pre>
+        </div>
+
+
+        <div class="content">
+            <h1>&lt;script&gt; (4)</h1>
+            <hr />
+            <ul>
+                <li>Buttons and functions are a special case</li>
+                <li>button.onclick is assigned later</li>
+            </ul>
+            <div>
+                <pre>
+                <script type="text/javascript">
+                    setHTML(
+                        `<body>
+                    <button id="clickme" onclick="clicked(this)">not EZ</button>
+                    <script type="text/javascript">
+                        function clicked(button) {
+                            alert('this is ' + button.innerText)
+                        }
+                    <\/script>
+                    <button id="clickme" onclick="clicked(this)">EZ</button>
+</body>`)
+</script>
+                </pre>
+            </div>
+            <div>
+                <button id="clickme" onclick="clicked(this)">not EZ</button>
+                <script type="text/javascript">
+                    function clicked(button) {
+                        alert('this is ' + button.innerText)
+                    }
+                </script>
+                <button id="clickme" onclick="clicked(this)">EZ</button>
+            </div>
+        </div>
+        <div class="content">
+            <h1>HTML Attributes</h1>
+            <hr />
+            <ul>
+                <li><code>id</code></li>
+                <ul>
+                    <li>Identifies one particular element by name</li>
+                    <li>Also works as an anchor</li>
+                </ul>
+                <li><code>class</code></li>
+                <ul>
+                    <li>Apply styles from CSS classes</li>
+                    <li>Can have multiple (applied in order listed)</li>
+                </ul>
+                <li><code>style</code></li>
+                <ul><li>Contains inline CSS code (applied last)</li></ul>
+            </ul>
+        </div>
+
+        <div class="content">
+            <h1>HTML Events</h1>
+            <ul>
+                <li><code>onclick=</code>: fires when clicked - very useful</li>
+                <li><code>onclick="foo(this)"</code> works (passes in this element)</li>
+                <li>Mouse: <code>onmouseover</code>, <code>onmouseout</code>, etc</li>
+                <li>Other: <code>onchange</code> (input), <code>onselect</code> (text selected), etc</li>
+                <li>ALL elements have these events - very useful</li>
+            </ul>
+        </div>
+        <div class="content">
+            <h1>JavaScript (1)</h1>
+            <ul>
+                <li>Global variables: <code>window</code>, <code>document</code></li>
+                <li><code>document.getElementById(id)</code>: Very important function</li>
+                <li><code>document.body.querySelector(cssSelector)</code></li>
+                <li><code>document.body.querySelectorAll(cssSelector)</code></li>
+
+                <li>Can set events on elements via code</li>
+                <li>Event Handler:  <code>element.onclick = () => { ... };</code>></li>
+                <li>Event Listener: <code>element.addEventListener("click", () => { ... })</code>></li>
+            </ul>
+
+            <textarea onchange="interest(this)">
+            </textarea>
+            <script>
+                function interest(element) {
+                    let interesting = document.getElementById("interesting");
+                    interesting.innerHTML = element.value
+                }
+            </script>
+            <div id="interesting"></div>
+        </div>
+
+        <div class="content">
+            <h1>JavaScript (2)</h1>
+            <ul>
+                <li><code>document.createElement(tag)</code> to create element object</li>
+                <li><code>element.id</code> to set id</li>
+                <li><code>element.className</code> to set class</li>
+                <li><code>element.style</code> to set inline style (non-class)</li>
+                
+                <li><code>element.remove()</code> removes element from its parent</li>
+                <li><code>element.append(el)</code> appends a new child element</li>
+            </ul>
+        </div>
+
+        <div class="content">
+            <h1>JavaScript (3)</h1>
+            <ul>
+                <li>Can set HTML strings directly</li>
+                <li><code>element.outerHTML</code>: Element and its descendants</li>
+                <li><code>element.innerHTML</code>: Subelements only</li>
+                <li><code>element.innerText</code>: Text content only</li>
+                <li><code>element.value</code>: Text value of input/select</li>
+                <li>Changing HTML causes "reflow" - can be expensive</li>
+            </ul>
+        </div>
+
+        <div class="content">
+            <h1>Keyboard</h1>
+            <ul>
+                <li><code>window.onkeydown = function(event) {};</code></li>
+                <li><code>event.which</code> to get key code</li>
+                <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/key/Key_Values">MDN: Table of key codes</a></li>
+            </ul>
+        </div>
+        <div class="content">
+            <h1>Mouse</h1>
+            <ul>
+                <li><code>element.addEventListener('mousemove', function (event) {}</code></li>
+                <li><code>event.clientX</code>, <code>event.clientY</code></li>
+            </ul>
+        </div>
+
+        <div class="content">
+            <h1>URL</h1>
+            <ul>
+                <li>Get URL from <code>location.href</code></li>
+                <li>Some interesting features</li>
+            </ul>
+        </div>
+        <div class="content">
+            <h1>URL: Parameters</h1>
+            <ul>
+                <li>Shows up as <code>?param=value&amp;param2=value2</code></li>
+                
+                <li>Code checks for parameters</li>
+                <li><code>https://www.youtube.com/watch?<span style="color:red">v=dQw4w9WgXcQ</span>&<span style="color:red">list=PL4LpaNCiNYHnLjXNX1CVQXPl08vRjeOI7</span></code></li>
+                <li>use <code>UrlSearchParameters</code> object</li>
+                <li>Try <code>?speakerNotes</code> on this slide URL!</li>
+                <li>Also add <code>&console</code> and <code>&source</code></li>
+            </ul>
+            <pre><script type="text/javascript">
+                setHTML(`
+let href = location.href;
+let q = href.indexOf("?");
+let h = href.indexOf("#");
+if (q > -1) {
+    let str = h > -1 ? href.substring(q + 1, h) : href.substring(q + 1);
+    let args = new URLSearchParams(str);
+    if (args.has('speakerNotes')) {
+        ...
+    }
+}
+                    `);
+            </script></pre>
+            <div class="speakerNotes">
+                <ul>
+
+                    <li>You've opened speaker notes!</li>
+                    <li>This is a feature I programmed in</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="content">
+            <h1>URL: Anchor</h1>
+            <ul>
+                <li>Shows up AFTER parameters</li>
+                <li>Jump to element with specific <code>id</code> / <code>name</code></li>
+                <li>Shows up as <code>#name</code> at end of URL</li>
+                <li>Link looks like <code><script type="text/javascript">setHTML('<a href="#name">...</a>')</script></code></li>
+                <ul><li><code>https://en.wikipedia.org/wiki/URI_fragment#Basics</code></li></ul>
+                <li>Clicking link anchor doesn't refresh the page</li>
+                <li>Fires event <code>hashchange</code> (handler <code>onhashchange</code>) on <code>window</code></li>
+            </ul>
+            <div>
+                <img width="40%" style="display:inline-block; margin-right:5%;" src="intro-web-client/anchor.png">
+                <img width="40%" style="display:inline-block" src="intro-web-client/source.png">
+            </div>
+        </div>
+
+        <div class="content">
+            <h1>CSS Styles (1)</h1>
+            <hr />
+            <ul>
+                <li>Contained in &lt;style&gt;, style=, or .css file</li>
+                <li>Each entry begins with selector</li>
+                <ul>
+                    <li>All tags <code>*</code></li>
+                    <li>Element tag <code>h1</code></li>
+                    <li>class <code>.elementClass</code></li>
+                    <li>id <code>#elementId</code></li>
+                </ul>
+            </ul>
+        </div>
+        <div class="content">
+            <h1>CSS Styles (2)</h1>
+            <hr />
+            <ul>
+                <li>Additional selectors</li>
+                <ul>
+                    <li>Pseudo-class <code>.elementClass:hover</code></li>
+                    <li>Pseudo-element <code>.elementClass::selection</code></li>
+                    <li>All descendants<code>.elementClass p</code></li>
+                    <li>Immediate children <code>.elementClass > p</code></li>
+                </ul>
+                <li><a href="https://www.w3schools.com/cssref/css_selectors.asp">There are A LOT of selectors</a></li>
+            </ul>
+        </div>
+        <div class="content">
+            <h1>CSS Style Example</h1>
+            <hr />
+            <p>Used on these slides:</p>
+            <pre>
+* {
+    font-family: 'IBM Plex Mono';
+}
+body {
+    background-color: lightsteelblue;
+}
+#border {
+    margin: 64px 64px 64px 64px;
+    background-color: antiquewhite
+}
+.margin {
+    margin: 64px 64px 64px 64px;
+}
+#slide {
+    border: 2px solid black;
+    width: calc(100% - 0px);
+    height: calc(100% - 128px);
+}
+pre {
+    margin-top:0px;
+    margin-bottom:0px;
+    padding-top:0px;
+    padding-bottom:0px;
+    padding-left:32px;
+    background-color:lightgrey;
+    font-size:16px;
+}
+</pre>
+        </div>
+
+        <div class="content">
+            <h1>CSS Attributes</h1>
+            <hr />
+            <ul>
+                <li>font-style, font-size, font-family</li>
+                <li>border-style, border-size, border-color</li>
+                <li>margin, padding</li>
+                <li>color, background-color</li>
+                <li>width, height</li>
+                <li>text-align, vertical-align (RIP horizontal alignment)</li>
+                <li>There are A LOT of attributes</li>
+            </ul>
+        </div>
+        <div class="content">
+            <h1>Font</h1>
+            <hr />
+            <ul>
+                <li>Replace the default font ASAP</li>
+                <li>Find a font on Google Fonts</li>
+            </ul>
+        </div>
+        <div class="content">
+            <h1>Margin and padding</h1>
+            <hr />
+            <ul>
+                <li>Space between elements</li>
+                <li>Margin: Space outside of border</li>
+                <li>Padding: Space within border</li>
+                <li>Add spacing, but not too much</li>
+            </ul>
+        </div>
+
+        <div class="content">
+            <h1>Display</h1>
+            <hr />
+            <ul>
+                <li><code>display</code> is a useful attribute</li>
+                
+                <li><code>block</code> top to bottom (default)</li>
+                <li><code>inline-block</code> for left to right</li>
+                <li><code>inline</code> for within text</li>
+                <ul><li>Does not respect width/height</li></ul>
+            </ul>
+        </div>
+        <div class="content">
+            <h1>Float</h1>
+            <hr />
+            <ul>
+                <li><code>float</code> is a useful attribute</li>
+                <li><code>left</code> top to bottom (default)</li>
+                <li><code>clear:both</code> on next element to clear</li>
+                <li>Kinda finicky to use</li>
+            </ul>
+        </div>
+
+        <div class="content">
+            <h1>CSS Units</h1>
+            <hr />
+            <ul>
+                <li>Attributes like size= have units</li>
+                <li>Absolute: px (pixel), pt (point)</li>
+                <li>Relative: % (parent element), em (font-size)</li>
+                <li><a href="https://www.w3schools.com/CSSref/css_units.asp">There are A LOT of units</a></li>
+            </ul>
+        </div>
+        <div class="content">
+            <h1>CSS Animations</h1>
+            <hr />
+            <ul>
+                <li>They're called <code>@keyframes</code></li>
+                <li>Define properties at each keyframe</li>
+                <li>Interpolates properties between frames</li>
+                <li>Can work with most properties</li>
+                <li>Can define using time percentages <code>0%</code> - <code>100%</code></li>
+                <li>Can define using <code>from</code> and <code>to</code></li>
+                <li>Apply to an element via its style</li>
+            </ul>
+
+
+            <p class="fading" onmouseover="animateParagraph(this)">This text fades in and our</p>
+            <pre>
+@keyframes fadein {
+    0% { opacity: 0; }
+    25% {   opacity: 1; }
+    50% { opacity:0.5; }
+    75% { opacity: 0; }
+    100% { opacity:0.5; }
+}
+
+.fading {
+    animation-name: fadein;
+    animation-duration: 1.5s;
+    animation-timing-function: ease;
+    animation-fill-mode: both;
+    animation-iteration-count: infinite;
+}
+                </pre>
+        </div>
+
+
+
+        <div class="title">
+            <h1>Thank you!</h1>
+            <hr />
+            <h2>Questions?</h2>
+            <hr />
+            <h2>
+                Slides available at
+                <br />
+                <a href="https://ineedauniqueusername.github.io/slides/case-study-website.html">https://ineedauniqueusername.github.io/slides/case-study-website.html</a>
+            </h2>
+        </div>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script type="text/javascript" src="slides.js"></script>
+</body>
