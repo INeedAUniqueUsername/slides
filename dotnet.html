@@ -14,7 +14,7 @@
     <div id="slides" hidden="hidden">
         <div class="title">
             <h1>
-                Intro to C# and .NET Core
+                Intro to C# and .NET 5.0
             </h1>
             <hr />
             <h2>Alex "Archcannon" Chen</h2>
@@ -25,59 +25,349 @@
             <ul>
                 <li>C++ is too hard!</li>
                 <li>Java is too slow!</li>
+                <li>JavaScript is too loose!</li>
                 <li>Introducing: C#</li>
             </ul>
         </div>
 
         <div class="content">
-            <h1>Slides</h1>
+            <h1>Features</h1>
             <hr />
             <ul>
-                <li><a href="intro-web-client.html">Web Programming: HTML + CSS + JS</a></li>
-                <li><a href="case-study-piano-radio.html">Case Study: Radio Piano</a></li>
+                <li>Cross-platform</li>
+                <li>Standard library</li>
+                <li>Lots of helpful features</li>
             </ul>
         </div>
         <div class="content">
-            <h1>Technical</h1>
+            <h1>The SDK</h1>
             <hr />
             <ul>
-                <li>Slides written in HTML + CSS + JS</li>
-                <li>JavaScript is code in <code>slides.js</code></li>
-                <li>CSS code is in <code>slides.css</code></li>
+                <li>Easy-to-use command-line program</li>
+                <li>Search for <code>.NET 5.0 SDK</code></li>
+                <li><code>dotnet new console</code> create new console project</li>
+                <li><code>dotnet add package &lt;name&gt;</code> add NuGet package</li>
+                <li><code>dotnet add reference &lt;path&gt;</code> link to project</li>
+                <li><code>dotnet build</code> compile project</li>
+                <li><code>dotnet run</code> run project</li>
+                <li><code>dotnet publish</code> compile a Release build</li>
+            </ul>
+        </div>
+
+        <div class="content">
+            <h1>Hello World!</h1>
+            <hr />
+            <ul>
+                <li>Create an empty folder</li>
+                <li><code>dotnet new console</code></li>
+                <li>This creates <code>{folder}.csproj</code> and <code>Program.cs</code></li>
+                <li><code>dotnet build</code></li>
+                <li><code>dotnet run</code></li>
+            </ul>
+
+            <pre>
+using System;
+namespace Test
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Hello World!");
+        }
+    }
+}
+            </pre>
+        </div>
+
+        <div class="content">
+            <h1>Top-level statements</h1>
+            <hr />
+            <ul>
+                <li>Fun fact: You don't need a Main()</li>
+                <li>You don't need a main class either</li>
+                <li>Use top-level statements</li>
+                <li>The code below is a C# program!</li>
+                <li>Note: Can't define other entry points</li>
+            </ul>
+            <pre>
+using System;
+Console.WriteLine("Hello World!");
+            </pre>
+        </div>
+
+        <div class="content">
+            <h1>Truth Machine</h1>
+            <hr />
+            <ul>
+                <li>A more useful demonstration</li>
+                <li>Ask user for input</li>
+                <li>If enter 0, exit</li>
+                <li>If enter 1, repeat indefinitely</li>
+            </ul>
+            <pre>
+using System;
+
+bool active = true;
+while(active) {
+	Console.WriteLine("Enter 0 or 1:");
+	string line = Console.ReadLine();
+	int i = int.Parse(line);
+	Console.WriteLine($"You entered: {i}");
+	if(i == 0) {
+		active = false;
+	} else if(i == 1) {
+		//repeat
+	} else {
+		throw new Exception("Invalid number");
+	}
+}
+            </pre>
+        </div>
+
+        <div class="content">
+            <h1>Language Features</h1>
+            <hr />
+            <ul>
+                <li>Nullable types</li>
+                <li>Null coalescing</li>
+                <li>Safe navigation</li>
+                <li>Nullable annotation</li>
             </ul>
         </div>
         <div class="content">
-            <h1><code>slides.js</code></h1>
+            <h1>More Language Features</h1>
             <hr />
             <ul>
-                <li>Features</li>
-                <ul>
-                    <li>Slide number is in URL hash</li>
-                    <li>Press left arrow for previous slide</li>
-                    <li>Press right arrow for next slide</li>
-                </ul>
-                <li>Requirements</li>
-                <ul>
-                    <li><code>&lt;div id="slide"&gt;</code> to hold the slide</li>
-                    <li><code>&lt;div id="slides" hidden="hidden"&gt;</code> to hold slides</li>
-                    <ul>
-                        <li>Each child element is a slide</li>
-                    </ul>
-                    <li><code>&lt;button id="prev"&gt;</code> to go previous slide</li>
-                    <li><code>&lt;button id="next"&gt;</code> to go next slide</li>
-                </ul>
+                <li>Multi-dimensional arrays</li>
+                <li>Properties</li>
+                <li>Indexers</li>
+                <li>String formatting</li>
+                <li>Extension methods</li>
+                <li>Language-INtegrated Query</li>
             </ul>
         </div>
+
+        
         <div class="content">
-            <h1><code>slides.css</code></h1>
+            <h1>Nullable types</h1>
             <hr />
             <ul>
-                <li>Features</li>
-                <ul>
-                    <li>Use <code>title</code> for a title slide</li>
-                    <li>Use <code>content</code> for a body slide</li>
-                </ul>
+                <li>Value types cannot be null (by default)</li>
+                <li><code>int</code>, <code>double</code>, <code>bool</code>, etc cannot be null</li>
+                <li>But <code>int?</code>, <code>double?</code>, <code>bool?</code> can!</li>
+                <li>Use the <code>Value</code> member to access value</li>
             </ul>
+            <pre>
+                int a = 0;
+                int? b = null;
+                if(b.HasValue) {
+                    Console.WriteLine()
+                }
+            </pre>
+        </div>
+
+        <div class="content">
+            <h1>Null coalescing</h1>
+            <hr />
+            <ul>
+                <li>In Java, reference types can be null</li>
+                <li>In C++, pointers can be nullptr</li>
+                <li>But you have to <em>check</em> for nulls</li>
+                <li>C# has null coalescing operator</li>
+                <li>If value is null, try next one</li>
+            </ul>
+            <pre>
+                string GetString() {
+                    string[] responses = { "Hello World!", "Hi there!", null };
+                    int index = new Random().Next(0, 3); // 0 to 2
+                    return responses[index];
+                }
+            </pre>
+            <p>Before</p>
+            <pre>
+                string a = GetString();
+                if(a == null) {
+                    a = GetString();
+                    if(a == null) {
+                        a = "Insert welcome message here";
+                    }
+                }
+                Console.WriteLine(a);
+            </pre>
+            <p>After</p>
+            <pre>
+                string a = GetString() ?? GetString() ?? "Insert welcome message here";
+                Console.WriteLine(a);
+            </pre>
+        </div>
+
+        <div class="content">
+            <h1>Null coalescing (2)</h1>
+            <hr />
+            <ul>
+                <li>As a last resort, throw an exception!</li>
+            </ul>
+            <pre>
+                string a = GetString() ?? new Exception("Please leave a message after the beep.");
+                Console.WriteLine(a);
+            </pre>
+        </div>
+
+        
+        <div class="content">
+            <h1>Safe navigation</h1>
+            <hr />
+            <ul>
+                <li>You want to access an object's member</li>
+                <li>But the object might be null</li>
+                <li>Use safe navigation to auto-return null</li>
+            </ul>
+            <pre>
+                string str = GetString(); //might return null;
+                Console.WriteLine(str?.Length ?? 0);
+
+                if(str?.Equals("Hello World!") == true) {
+                    Console.WriteLine("Hi, computer");
+                }
+
+            </pre>
+        </div>
+        <div class="content">
+            <h1>Multi-dimensional arrays</h1>
+            <hr>
+            <ul>
+                <li>Most languages have arrays of arrays</li>
+                <li>C# also has multidimensional arrays built in!</li>
+            </ul>
+
+            <pre>
+                //1D
+                int[] line = new int[10];
+                for(int x = 0; x &lt; 10; x++) {
+                    line[x] = x;
+                }
+
+                //2D
+                int[,] grid = new int[10, 10];
+                for(int x = 0; x &lt; 10; x++) {
+                    for(int y = 0; y &lt; 10; y++) {
+                        grid[x, y] = x + y;
+                    }
+                }
+
+                //3D
+                int[,,] space = new int[10, 10, 10];
+                for(int x = 0; x &lt; 10; x++) {
+                    for(int y = 0; y &lt; 10; y++) {
+                        for(int z = 0; z &lt; 10; z++) {
+
+                            space[x, y, z] = x + y + z;
+                        }
+                    }
+                }
+            </pre>
+        </div>
+
+        <div class="content">
+            <h1>Properties</h1>
+            <hr>
+            <ul>
+                <li>No more writing getter/setter functions!</li>
+                <li>Auto-property generates getter/setter for member</li>
+                <li>Implicit setter variable: <code>value</code></li>
+            </ul>
+            <pre>
+class A {
+    private int a;
+    private int b;
+    public int c { get; private set; }  //Auto property
+    
+
+    public int A {
+        get => a;
+        set => a = value;
+    }
+    public int b {
+        get {
+            Console.WriteLine("Someone's reading b");
+            return b;
+        }
+        set {
+            
+            Console.WriteLine("Someone's writing b");
+            b = value;
+        }
+    }
+
+    int sum => a + b; //Computed on demand
+    public A() {
+        a = 0;
+        b = 2;
+        c = 800;
+        d = 255;
+    }
+    public void Update() {
+        a += 1;
+        b *= 2;
+        c /= 2;
+        d -= 5;
+    }
+}
+            </pre>
+        </div>
+
+        
+        <div class="content">
+            <h1>Indexers</h1>
+            <hr>
+            <ul>
+                <li>Custom indexers!</li>
+                <li>Multiple indexers</li>
+                <li>Works like properties</li>
+            </ul>
+            <pre>
+class A {
+    List&lt;string&gt; words;
+    Dictionary&lt;Point, string&gt; map; 
+
+    public int this[int i] {
+        get => words[i];
+        set => words[i] = value;
+    }
+    public Point this[Point location] {
+        get => map[location];
+        set => map[location] = value;
+    }
+}
+            </pre>
+        </div>
+
+        <div class="content">
+            <h1>String formatting</h1>
+            <hr>
+            <ul>
+                <li>Interpolated strings!</li>
+                <li>Starts with <code>$</code></li>
+                <li>Surround code with <code>{}</code></li>
+                <li>Escape curly braces as <code>{{}}</code></li>
+
+                <li>Verbatim strings</li>
+                <li>Starts with <code>@</code></li>
+                <li>Escape quotes as <code>""</code></li>
+                <li>Can combine both</li>
+            </ul>
+            <pre>
+Console.WriteLine("Enter 10 digits");
+string phone = Console.ReadLine();
+Console.WriteLine($"Phone number: ({phone[0..3]}) {phone[3..6]}-{phone[6..10]}");
+
+Console.WriteLine(@"You know what they say ""All toasters toast toast""!");
+
+Console.WriteLine("Say something!");
+string str = Console.ReadLine();
+Console.WriteLine(@$"You said, ""{str}"" - did I hear that correctly?");
+            </pre>
         </div>
     </div>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
